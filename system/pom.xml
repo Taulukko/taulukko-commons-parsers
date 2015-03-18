@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	
+	<url>https://github.com/Taulukko/taulukko-commons-parsers</url>
+
+	<groupId>com.taulukko.commons</groupId>
+	<artifactId>taulukko-commons-parsers</artifactId>
+	<packaging>jar</packaging>
+	<version>1.0.0</version>	
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<junit.version>4.11</junit.version>
+		<jdk.version>1.7</jdk.version>
+		<servlet.version>2.5</servlet.version>
+	</properties>
+
+  
+		 <!-- [ means closet, inclusive. ) means open, excluisive. Eg. [1.0.0,2.0.0) means 1.0.0 - >  2.0.0 (except 2.0.0)-->	
+	<dependencies>
+
+<!-- 
+
+
+	
+	/*TAULUKKO COMMON UTIL*/
+	compile 'taulukko.commons:taulukko-commons-util:1.0@jar'
+
+
+	//apache
+	compile 'commons-codec:commons-codec:1.+'
+	compile 'commons-collections:commons-collections:3.2.+'
+	compile 'commons-dbcp:commons-dbcp:1.+'
+	compile 'commons-dbutils:commons-dbutils:1.+'
+	compile 'commons-discovery:commons-discovery:0.+'
+	compile 'org.apache.commons:commons-email:1.+'
+	compile 'commons-fileupload:commons-fileupload:1.2.+'
+	compile 'commons-io:commons-io:2.+'
+	compile 'commons-lang:commons-lang:2.+'
+	compile 'commons-logging:commons-logging:1.1.+'
+	compile 'commons-net:commons-net:1.4.+'
+	compile 'commons-pool:commons-pool:1.+'
+	compile 'org.apache.httpcomponents:fluent-hc:4.2.+'
+	compile 'org.apache.httpcomponents:httpclient:4.2.+'
+	compile 'org.apache.httpcomponents:httpclient-cache:4.2.+'
+	compile 'org.apache.httpcomponents:httpcore:4.2.+'
+	compile 'org.apache.httpcomponents:httpmime:4.2.+'
+	compile 'log4j:log4j:1.2.+'
+
+	//j2ee
+	compile 'javax.servlet:jsp-api:2.+'
+	compile 'javax.servlet:javax.servlet-api:3.1.+'
+	
+	//mysql
+	compile 'mysql:mysql-connector-java:5.1.+'
+
+	
+	//log
+	compile 'org.slf4j:slf4j-api:1.4.+'
+	compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.0.+'
+
+	//mail
+	compile 'org.apache.commons:commons-email:1.2'
+ -->
+		<dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.11</version>
+	      <scope>test</scope>
+	    </dependency>
+	    		 	
+		<dependency>
+			<groupId>com.taulukko.commons</groupId>
+			<artifactId>taulukko-commons-util</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+					
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.3.1</version>
+		</dependency>
+							
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.7.3</version>
+		</dependency>
+									
+							
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.0</version>
+				<configuration>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version> 
+			</plugin>
+			 <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<excludes>
+						<exclude>integration/**/*Test.java</exclude>						
+					</excludes>
+					<includes>
+						<include>**/taulukko/**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+		</plugins>
+
+	</build>
+	
+	<profiles>		 
+		<profile>
+			<id>production</id>
+			<activation>
+				<property>
+			      <name>profile</name>
+			      <value>production</value>
+		      	</property>
+	      	</activation>
+			<build>
+				<plugins>
+				 <plugin>
+				      <artifactId>maven-antrun-plugin</artifactId>
+				      <version>1.7</version>
+				      <executions>
+				        <execution>
+				          <phase>prepare-package</phase>
+				           <goals>
+		                       <goal>run</goal>
+		                   </goals>
+				          <configuration>
+				            <target>
+				             <echo>Replace file...</echo>
+				               <delete file="${project.build.outputDirectory}/taulukko.properties" />
+				              <copy file="${project.build.outputDirectory}/taulukko.properties"
+				                tofile="${project.build.outputDirectory}/taulukko.properties" overwrite="true"/>
+				            </target>
+				          </configuration> 
+				        </execution>
+				      </executions>
+				    </plugin> 
+					
+					 <plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.18.1</version>
+						<configuration>
+							<includes>
+								<include>**/noTest/**/*Test.java</include>								
+							</includes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile> 
+	</profiles>
+
+	
+	<organization>
+		<url>http://www.taulukko.com.br</url>
+		<name>Taulukko</name>
+	</organization>
+	<name>Taulukko Common Parsers</name>
+	<description>A common parsers Taulukko project</description>
+</project>

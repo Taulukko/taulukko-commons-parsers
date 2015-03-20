@@ -1,4 +1,4 @@
-package com.evon.htmlparser;
+package com.taulukko.commons.parsers.htmlparser;
  
 
 public interface IElements {

@@ -1,4 +1,4 @@
-package com.evon.htmlparser;
+package com.taulukko.commons.parsers.htmlparser;
 
 public class Element implements IElement {
 	private org.jsoup.nodes.Element element = null;

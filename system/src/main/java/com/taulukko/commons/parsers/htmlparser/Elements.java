@@ -1,4 +1,4 @@
-package com.evon.htmlparser;
+package com.taulukko.commons.parsers.htmlparser;
 
 public class Elements implements IElements {
 	private org.jsoup.select.Elements elements;

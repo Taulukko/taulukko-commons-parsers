@@ -1,4 +1,4 @@
-package com.evon.jsonParser;
+package com.taulukko.commons.parsers.jsonParser;
 
 import com.google.gson.Gson;
 

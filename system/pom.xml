@@ -20,61 +20,18 @@
   
 		 <!-- [ means closet, inclusive. ) means open, excluisive. Eg. [1.0.0,2.0.0) means 1.0.0 - >  2.0.0 (except 2.0.0)-->	
 	<dependencies>
-
-<!-- 
-
-
-	
-	/*TAULUKKO COMMON UTIL*/
-	compile 'taulukko.commons:taulukko-commons-util:1.0@jar'
-
-
-	//apache
-	compile 'commons-codec:commons-codec:1.+'
-	compile 'commons-collections:commons-collections:3.2.+'
-	compile 'commons-dbcp:commons-dbcp:1.+'
-	compile 'commons-dbutils:commons-dbutils:1.+'
-	compile 'commons-discovery:commons-discovery:0.+'
-	compile 'org.apache.commons:commons-email:1.+'
-	compile 'commons-fileupload:commons-fileupload:1.2.+'
-	compile 'commons-io:commons-io:2.+'
-	compile 'commons-lang:commons-lang:2.+'
-	compile 'commons-logging:commons-logging:1.1.+'
-	compile 'commons-net:commons-net:1.4.+'
-	compile 'commons-pool:commons-pool:1.+'
-	compile 'org.apache.httpcomponents:fluent-hc:4.2.+'
-	compile 'org.apache.httpcomponents:httpclient:4.2.+'
-	compile 'org.apache.httpcomponents:httpclient-cache:4.2.+'
-	compile 'org.apache.httpcomponents:httpcore:4.2.+'
-	compile 'org.apache.httpcomponents:httpmime:4.2.+'
-	compile 'log4j:log4j:1.2.+'
-
-	//j2ee
-	compile 'javax.servlet:jsp-api:2.+'
-	compile 'javax.servlet:javax.servlet-api:3.1.+'
-	
-	//mysql
-	compile 'mysql:mysql-connector-java:5.1.+'
-
-	
-	//log
-	compile 'org.slf4j:slf4j-api:1.4.+'
-	compile 'org.apache.logging.log4j:log4j-slf4j-impl:2.0.+'
-
-	//mail
-	compile 'org.apache.commons:commons-email:1.2'
- -->
+ 
 		<dependency>
 	      <groupId>junit</groupId>
 	      <artifactId>junit</artifactId>
 	      <version>4.11</version>
 	      <scope>test</scope>
 	    </dependency>
-	    		 	
+	    		 	 
 		<dependency>
 			<groupId>com.taulukko.commons</groupId>
 			<artifactId>taulukko-commons-util</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1</version>			
 		</dependency>
 					
 		<dependency>

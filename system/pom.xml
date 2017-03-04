@@ -17,12 +17,12 @@
 	<groupId>com.taulukko.commons</groupId>
 	<artifactId>taulukko-commons-parsers</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<junit.version>4.11</junit.version>
-		<jdk.version>1.7</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<servlet.version>2.5</servlet.version>
 		<encoding>UTF-8</encoding>
 	</properties>
@@ -44,7 +44,14 @@
 		    <artifactId>taulukko-commons-util</artifactId>
 		    <version>1.1.13</version>
 		</dependency>
+	
+		<dependency>
+		    <groupId>com.taulukko.commons</groupId>
+		    <artifactId>taulukko-commons-util</artifactId>
+		    <version>1.1.13</version>
+		</dependency>
 
+ 
  
 
 		<dependency>
@@ -60,10 +67,41 @@
 		</dependency>
 
 
+
+		<!-- groovy --> 
+		<!-- https://mvnrepository.com/artifact/org.codehaus.groovy/groovy-all -->
+		<dependency>
+		    <groupId>org.codehaus.groovy</groupId>
+		    <artifactId>groovy-all</artifactId>
+		    <version>2.4.8</version>
+		</dependency>
+
+		<!-- end groovy -->
 	</dependencies>
 
 	<build>
 		<plugins>
+			  
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<argLine>-Dfile.encoding=${encoding}</argLine>
+					<excludes>
+						<exclude>integration/**/*Test.java</exclude>
+					</excludes>
+					<includes>
+						<include>**/taulukko/**/*Test.java</include>
+					</includes>
+				</configuration>
+			</plugin>
+			
 			 
             			<!-- To total integration with eclipse and groovy, add groovy support 
 				from distribuition https://github.com/groovy/groovy-eclipse/wiki -->
@@ -95,27 +133,6 @@
 				</dependencies>
 
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.4</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.18.1</version>
-				<configuration>
-					<argLine>-Dfile.encoding=${encoding}</argLine>
-					<excludes>
-						<exclude>integration/**/*Test.java</exclude>
-					</excludes>
-					<includes>
-						<include>**/taulukko/**/*Test.java</include>
-					</includes>
-				</configuration>
-			</plugin>
-			
-			 
 		</plugins>
 		
 		

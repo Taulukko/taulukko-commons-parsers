@@ -17,7 +17,7 @@
 	<groupId>com.taulukko.commons</groupId>
 	<artifactId>taulukko-commons-parsers</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

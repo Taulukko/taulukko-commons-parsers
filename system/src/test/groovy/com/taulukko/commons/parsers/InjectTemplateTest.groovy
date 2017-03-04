@@ -16,4 +16,6 @@ class InjectTemplateTest {
 		assert config != null;
 		assert config.verbose == true
 	}
+	
+	 
 }
